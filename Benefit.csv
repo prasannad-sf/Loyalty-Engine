@@ -1,0 +1,4 @@
+BenefitType.Name,BenefitTypeId,Description,Id,IsActive,Name,PrioritySequence,Unit.Name,UnitId,Value
+Club Benefits,0jhRL0000000YCzYAM,,0jiRL0000000XVRYA2,true,Free Shipping,,,,
+Club Benefits,0jhRL0000000YCzYAM,,0jiRL0000000XX3YAM,true,20% Discount,,,,
+Exclusive Benefits,0jhRL0000000YBNYA2,,0jiRL0000000XYfYAM,true,Premium Access,,,,

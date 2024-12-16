@@ -1,0 +1,8 @@
+Description,Id,Name,ProcessType
+Represents a transaction that accrues points to a loyalty program member's balance.,0lERL0000000m7t2AA,Accrual,Loyalty
+Represents a transaction that redeems a loyalty program member's points.,0lERL0000000m7u2AA,Redemption,Loyalty
+Represents a transaction that reverses an accrual to a loyalty program member's balance.,0lERL0000000m7v2AA,Accrual Reversal,Loyalty
+Represents a transaction that reverses a redemption of a loyalty program member's points.,0lERL0000000m7w2AA,Redemption Reversal,Loyalty
+Represents a transaction that resets qualifying points balance for a loyalty program member.,0lERL0000000m7x2AA,Qualifying Points Reset,Loyalty
+Represents a transaction that expires points for a loyalty program member.,0lERL0000000m7y2AA,Points Expiration,Loyalty
+Represents a transaction that manually adjusts points for a loyalty program member.,0lERL0000000m7z2AA,Manual Points Adjustment,Loyalty

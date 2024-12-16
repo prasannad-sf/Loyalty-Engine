@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LoyaltyProgramSetup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Club Cloud</label>
+    <programProcesses>
+        <executionType>RealTime</executionType>
+        <loyaltyTierGroup>Club Tier Group</loyaltyTierGroup>
+        <parameters>
+            <dataType>Text</dataType>
+            <isCollection>false</isCollection>
+            <isInput>false</isInput>
+            <isOutput>true</isOutput>
+            <parameterName>MemberCurrentTier</parameterName>
+            <parameterType>Variable</parameterType>
+        </parameters>
+        <parameters>
+            <dataType>Date</dataType>
+            <isCollection>false</isCollection>
+            <isInput>false</isInput>
+            <isOutput>true</isOutput>
+            <parameterName>TierExpirationDate</parameterName>
+            <parameterType>Variable</parameterType>
+        </parameters>
+        <parameters>
+            <dataType>Numeric</dataType>
+            <decimalPlaces>2</decimalPlaces>
+            <isCollection>false</isCollection>
+            <isInput>false</isInput>
+            <isOutput>true</isOutput>
+            <parameterName>MemberCurrentPointBalance</parameterName>
+            <parameterType>Variable</parameterType>
+        </parameters>
+        <parameters>
+            <dataType>Text</dataType>
+            <isCollection>false</isCollection>
+            <isInput>false</isInput>
+            <isOutput>true</isOutput>
+            <parameterName>MemberTierBeforeAssessment</parameterName>
+            <parameterType>Variable</parameterType>
+        </parameters>
+        <parameters>
+            <dataType>Numeric</dataType>
+            <decimalPlaces>0</decimalPlaces>
+            <isCollection>false</isCollection>
+            <isInput>false</isInput>
+            <isOutput>true</isOutput>
+            <parameterName>MemberTierSequenceNumber</parameterName>
+            <parameterType>Variable</parameterType>
+        </parameters>
+        <parameters>
+            <dataType>Numeric</dataType>
+            <decimalPlaces>0</decimalPlaces>
+            <isCollection>false</isCollection>
+            <isInput>false</isInput>
+            <isOutput>true</isOutput>
+            <parameterName>MemberTierSequenceNumberBeforeAssessment</parameterName>
+            <parameterType>Variable</parameterType>
+        </parameters>
+        <processName>Change Tier (Club Tier Group)</processName>
+        <processType>TierProcessing</processType>
+        <rules>
+            <actions>
+                <actionName>Get Member’s Current Tier</actionName>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>LoyaltyTierGroupName</parameterName>
+                    <value>Club Tier Group</value>
+                    <valueType>Literal</valueType>
+                </actionParameters>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>LoyaltyMemberTier</parameterName>
+                    <value>MemberCurrentTier</value>
+                </actionParameters>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>TierExpirationDate</parameterName>
+                    <value>TierExpirationDate</value>
+                </actionParameters>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>TierSequenceNumber</parameterName>
+                    <value>MemberTierSequenceNumber</value>
+                </actionParameters>
+                <actionType>GetMemberTier</actionType>
+            </actions>
+            <actions>
+                <actionName>Get Member’s Current Tier Points Point Balance</actionName>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>ProgramCurrencyName</parameterName>
+                    <value>Tier Points</value>
+                    <valueType>Literal</valueType>
+                </actionParameters>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>PointsBalance</parameterName>
+                    <value>MemberCurrentPointBalance</value>
+                </actionParameters>
+                <actionType>GetMemberPointBalance</actionType>
+            </actions>
+            <actions>
+                <actionName>Move Member to Bronze Tier</actionName>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>NewTier</parameterName>
+                    <value>Bronze</value>
+                    <valueType>Literal</valueType>
+                </actionParameters>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>ReasonForChange</parameterName>
+                    <value>&quot;The member&apos;s Tier Points point balance makes the member eligible for the tier.&quot;</value>
+                </actionParameters>
+                <actionType>ChangeMemberTier</actionType>
+            </actions>
+            <actions>
+                <actionName>Move Member to Silver Tier</actionName>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>NewTier</parameterName>
+                    <value>Silver</value>
+                    <valueType>Literal</valueType>
+                </actionParameters>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>ReasonForChange</parameterName>
+                    <value>&quot;The member&apos;s Tier Points point balance makes the member eligible for the tier.&quot;</value>
+                </actionParameters>
+                <actionType>ChangeMemberTier</actionType>
+            </actions>
+            <actions>
+                <actionName>Move Member to Gold Tier</actionName>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>NewTier</parameterName>
+                    <value>Gold</value>
+                    <valueType>Literal</valueType>
+                </actionParameters>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>ReasonForChange</parameterName>
+                    <value>&quot;The member&apos;s Tier Points point balance makes the member eligible for the tier.&quot;</value>
+                </actionParameters>
+                <actionType>ChangeMemberTier</actionType>
+            </actions>
+            <actions>
+                <actionName>Assign Member’s Tier Information Before Assessment</actionName>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>MemberTierBeforeAssessment</parameterName>
+                    <sequenceNumber>1</sequenceNumber>
+                    <value>{!MemberCurrentTier}</value>
+                </actionParameters>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>MemberTierSequenceNumberBeforeAssessment</parameterName>
+                    <sequenceNumber>2</sequenceNumber>
+                    <value>{!MemberTierSequenceNumber}</value>
+                </actionParameters>
+                <actionType>AssignParameterValues</actionType>
+            </actions>
+            <actions>
+                <actionName>Get Member’s Tier After Assessment</actionName>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>LoyaltyTierGroupName</parameterName>
+                    <value>Club Tier Group</value>
+                    <valueType>Literal</valueType>
+                </actionParameters>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>LoyaltyMemberTier</parameterName>
+                    <value>MemberCurrentTier</value>
+                </actionParameters>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>TierExpirationDate</parameterName>
+                    <value>TierExpirationDate</value>
+                </actionParameters>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>TierSequenceNumber</parameterName>
+                    <value>MemberTierSequenceNumber</value>
+                </actionParameters>
+                <actionType>GetMemberTier</actionType>
+            </actions>
+            <conditions>
+                <conditionCriteria>1</conditionCriteria>
+                <conditionFilterCriteria>
+                    <operator>LessThan</operator>
+                    <sequence>1</sequence>
+                    <sourceFieldName>MemberCurrentPointBalance</sourceFieldName>
+                    <value>1000</value>
+                    <valueType>Literal</valueType>
+                </conditionFilterCriteria>
+                <conditionName>Is Member’s Current Point Balance Eligible for Bronze Tier?</conditionName>
+                <conditionType>Condition</conditionType>
+            </conditions>
+            <conditions>
+                <conditionCriteria>( 1 OR 2 ) AND 3</conditionCriteria>
+                <conditionFilterCriteria>
+                    <operator>Equals</operator>
+                    <sequence>1</sequence>
+                    <sourceFieldName>MemberCurrentTier</sourceFieldName>
+                    <value>Silver</value>
+                    <valueType>Literal</valueType>
+                </conditionFilterCriteria>
+                <conditionFilterCriteria>
+                    <operator>Equals</operator>
+                    <sequence>2</sequence>
+                    <sourceFieldName>MemberCurrentTier</sourceFieldName>
+                    <value>Gold</value>
+                    <valueType>Literal</valueType>
+                </conditionFilterCriteria>
+                <conditionFilterCriteria>
+                    <operator>LessThanOrEquals</operator>
+                    <sequence>3</sequence>
+                    <sourceFieldName>TierExpirationDate</sourceFieldName>
+                    <value>TODAY()</value>
+                    <valueType>Formula</valueType>
+                </conditionFilterCriteria>
+                <conditionName>Move Member to Bronze Tier based on Their Current Tier and Tier Expiration Date?</conditionName>
+                <conditionType>Condition</conditionType>
+            </conditions>
+            <conditions>
+                <conditionCriteria>1 AND 2</conditionCriteria>
+                <conditionFilterCriteria>
+                    <operator>GreaterThanOrEquals</operator>
+                    <sequence>1</sequence>
+                    <sourceFieldName>MemberCurrentPointBalance</sourceFieldName>
+                    <value>1000</value>
+                    <valueType>Literal</valueType>
+                </conditionFilterCriteria>
+                <conditionFilterCriteria>
+                    <operator>LessThan</operator>
+                    <sequence>2</sequence>
+                    <sourceFieldName>MemberCurrentPointBalance</sourceFieldName>
+                    <value>5000</value>
+                    <valueType>Literal</valueType>
+                </conditionFilterCriteria>
+                <conditionName>Is Member’s Current Point Balance Eligible for Silver Tier?</conditionName>
+                <conditionType>Condition</conditionType>
+            </conditions>
+            <conditions>
+                <conditionCriteria>1 OR ((2 OR 3) AND 4)</conditionCriteria>
+                <conditionFilterCriteria>
+                    <operator>Equals</operator>
+                    <sequence>1</sequence>
+                    <sourceFieldName>MemberCurrentTier</sourceFieldName>
+                    <value>Bronze</value>
+                    <valueType>Literal</valueType>
+                </conditionFilterCriteria>
+                <conditionFilterCriteria>
+                    <operator>Equals</operator>
+                    <sequence>2</sequence>
+                    <sourceFieldName>MemberCurrentTier</sourceFieldName>
+                    <value>Silver</value>
+                    <valueType>Literal</valueType>
+                </conditionFilterCriteria>
+                <conditionFilterCriteria>
+                    <operator>Equals</operator>
+                    <sequence>3</sequence>
+                    <sourceFieldName>MemberCurrentTier</sourceFieldName>
+                    <value>Gold</value>
+                    <valueType>Literal</valueType>
+                </conditionFilterCriteria>
+                <conditionFilterCriteria>
+                    <operator>LessThanOrEquals</operator>
+                    <sequence>4</sequence>
+                    <sourceFieldName>TierExpirationDate</sourceFieldName>
+                    <value>TODAY()</value>
+                    <valueType>Formula</valueType>
+                </conditionFilterCriteria>
+                <conditionName>Move Member to Silver Tier based on Their Current Tier and Tier Expiration Date?</conditionName>
+                <conditionType>Condition</conditionType>
+            </conditions>
+            <conditions>
+                <conditionCriteria>1</conditionCriteria>
+                <conditionFilterCriteria>
+                    <operator>GreaterThanOrEquals</operator>
+                    <sequence>1</sequence>
+                    <sourceFieldName>MemberCurrentPointBalance</sourceFieldName>
+                    <value>5000</value>
+                    <valueType>Literal</valueType>
+                </conditionFilterCriteria>
+                <conditionName>Is Member’s Current Point Balance Eligible for Gold Tier?</conditionName>
+                <conditionType>Condition</conditionType>
+            </conditions>
+            <conditions>
+                <conditionCriteria>1 OR 2 OR ( 3 AND 4 )</conditionCriteria>
+                <conditionFilterCriteria>
+                    <operator>Equals</operator>
+                    <sequence>1</sequence>
+                    <sourceFieldName>MemberCurrentTier</sourceFieldName>
+                    <value>Bronze</value>
+                    <valueType>Literal</valueType>
+                </conditionFilterCriteria>
+                <conditionFilterCriteria>
+                    <operator>Equals</operator>
+                    <sequence>2</sequence>
+                    <sourceFieldName>MemberCurrentTier</sourceFieldName>
+                    <value>Silver</value>
+                    <valueType>Literal</valueType>
+                </conditionFilterCriteria>
+                <conditionFilterCriteria>
+                    <operator>Equals</operator>
+                    <sequence>3</sequence>
+                    <sourceFieldName>MemberCurrentTier</sourceFieldName>
+                    <value>Gold</value>
+                    <valueType>Literal</valueType>
+                </conditionFilterCriteria>
+                <conditionFilterCriteria>
+                    <operator>LessThanOrEquals</operator>
+                    <sequence>4</sequence>
+                    <sourceFieldName>TierExpirationDate</sourceFieldName>
+                    <value>TODAY()</value>
+                    <valueType>Formula</valueType>
+                </conditionFilterCriteria>
+                <conditionName>Move Member to Gold Tier based on Their Current Tier and Tier Expiration Date?</conditionName>
+                <conditionType>Condition</conditionType>
+            </conditions>
+            <isProcessEligibilityRule>false</isProcessEligibilityRule>
+            <ruleName>Change Tier of Eligible Members Based on Qualifying Point Balance</ruleName>
+            <startDate>2024-12-11</startDate>
+            <status>Active</status>
+            <stepMappings>
+                <associatedStep>Is Member’s Current Point Balance Eligible for Bronze Tier?</associatedStep>
+                <sequence>3</sequence>
+            </stepMappings>
+            <stepMappings>
+                <associatedStep>Move Member to Bronze Tier based on Their Current Tier and Tier Expiration Date?</associatedStep>
+                <parentStep>Is Member’s Current Point Balance Eligible for Bronze Tier?</parentStep>
+                <sequence>1</sequence>
+            </stepMappings>
+            <stepMappings>
+                <associatedStep>Is Member’s Current Point Balance Eligible for Silver Tier?</associatedStep>
+                <sequence>4</sequence>
+            </stepMappings>
+            <stepMappings>
+                <associatedStep>Move Member to Silver Tier based on Their Current Tier and Tier Expiration Date?</associatedStep>
+                <parentStep>Is Member’s Current Point Balance Eligible for Silver Tier?</parentStep>
+                <sequence>1</sequence>
+            </stepMappings>
+            <stepMappings>
+                <associatedStep>Is Member’s Current Point Balance Eligible for Gold Tier?</associatedStep>
+                <sequence>5</sequence>
+            </stepMappings>
+            <stepMappings>
+                <associatedStep>Move Member to Gold Tier based on Their Current Tier and Tier Expiration Date?</associatedStep>
+                <parentStep>Is Member’s Current Point Balance Eligible for Gold Tier?</parentStep>
+                <sequence>1</sequence>
+            </stepMappings>
+            <stepMappings>
+                <associatedStep>Get Member’s Current Tier</associatedStep>
+                <sequence>1</sequence>
+            </stepMappings>
+            <stepMappings>
+                <associatedStep>Get Member’s Current Tier Points Point Balance</associatedStep>
+                <sequence>2</sequence>
+            </stepMappings>
+            <stepMappings>
+                <associatedStep>Move Member to Bronze Tier</associatedStep>
+                <parentStep>Move Member to Bronze Tier based on Their Current Tier and Tier Expiration Date?</parentStep>
+                <sequence>1</sequence>
+            </stepMappings>
+            <stepMappings>
+                <associatedStep>Move Member to Silver Tier</associatedStep>
+                <parentStep>Move Member to Silver Tier based on Their Current Tier and Tier Expiration Date?</parentStep>
+                <sequence>1</sequence>
+            </stepMappings>
+            <stepMappings>
+                <associatedStep>Move Member to Gold Tier</associatedStep>
+                <parentStep>Move Member to Gold Tier based on Their Current Tier and Tier Expiration Date?</parentStep>
+                <sequence>1</sequence>
+            </stepMappings>
+            <stepMappings>
+                <associatedStep>Assign Member’s Tier Information Before Assessment</associatedStep>
+                <sequence>6</sequence>
+            </stepMappings>
+            <stepMappings>
+                <associatedStep>Get Member’s Tier After Assessment</associatedStep>
+                <sequence>7</sequence>
+            </stepMappings>
+        </rules>
+        <status>Active</status>
+    </programProcesses>
+</LoyaltyProgramSetup>

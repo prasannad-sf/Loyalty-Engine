@@ -1,0 +1,29 @@
+{
+  "orgName": "Loyalty Scratch Org",
+  "edition": "Enterprise",
+  "language": "en_US",
+  "features": [
+  "PersonAccounts",
+  "ServiceCloud",
+  "B2CLoyaltyManagement",
+  "B2BLoyaltyManagement",
+  "B2CLoyaltyManagementPlus",
+  "LoyaltyManagementStarter",
+  "LoyaltyEngine",
+  "BatchManagement",
+  "DataProcessingEngine"
+  ],
+  "settings": {
+  "userManagementSettings": {
+  "enableCanAnswerContainUsername": true,
+  "enableConcealPersonalInfo": true,
+  "enableEnhancedPermsetMgmt": true,
+  "enableEnhancedProfileMgmt": true,
+  "enableNewProfileUI": true,
+  "enableProfileFiltering": true
+  },
+  "IndustriesLoyaltySettings": {
+  "enableAutomaticMemberTierAssessmentSelection": true
+  }
+  }
+  }

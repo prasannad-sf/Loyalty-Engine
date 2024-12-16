@@ -1,0 +1,3 @@
+Description,Id,JournalType.Name,JournalTypeId,Name
+Represents transactions that credit points to new loyalty program members that have joined a loyalty program.,0lSRL00000003U92AI,Accrual,0lERL0000000m7t2AA,Member Enrollment
+Represents transactions that credit points to loyalty program members when a member they have referred has joined the loyalty program.,0lSRL00000003UA2AY,Accrual,0lERL0000000m7t2AA,Member Referral

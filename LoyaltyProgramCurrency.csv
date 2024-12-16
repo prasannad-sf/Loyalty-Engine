@@ -1,0 +1,3 @@
+CostperUnit,CurrencyType,ExpiryModel,ExpiryPeriodFrequency,ExpiryPeriodUnit,ExtendExpiration,HasEscrow,Id,IsActive,IsPrimary,LoyaltyProgram.Name,LoyaltyProgramId,LoyaltyTierGroup.Name,LoyaltyTierGroupId,Name
+,NonQualifying,Fixed,1,Years,TillEndOfMonth,false,0lcRL0000000AvRYAU,true,true,Club Cloud,0lpRL0000000JSTYA2,,,Club Points
+,Qualifying,,,,,false,0lcRL0000000Ax3YAE,true,false,Club Cloud,0lpRL0000000JSTYA2,Club Tier Group,0ltRL0000000CNlYAM,Tier Points

@@ -1,0 +1,49 @@
+{
+  "objects": [
+    {
+      "query": "SELECT Description,EscrowPeriod,Id,IsPrimary,Name,Status FROM LoyaltyProgram",
+      "operation": "Upsert",
+      "externalId": "Name"
+    },
+    {
+      "query": "SELECT Category,Description,Id,LoyaltyProgramId,Name,ProcessType FROM BenefitType",
+      "operation": "Upsert",
+      "externalId": "Name"
+    },
+    {
+      "query": "SELECT BenefitTypeId, Description, Id, IsActive, Name, PrioritySequence, UnitId, Value FROM Benefit",
+      "operation": "Upsert",
+      "externalId": "Name"
+    },
+    {
+      "query": "SELECT Description,ExtendExpiration,Id,IsActive,IsHiddenToMembers,IsPrimary,LoyaltyProgramId,MayEdit,Name,QpResetDate,QpResetFrequency,QpResetPeriod,TierModel,TierPeriodQuantity,TierPeriodUnit FROM LoyaltyTierGroup",
+      "operation": "Upsert",
+      "externalId": "Name"
+    },
+    {
+      "query": "SELECT Description,Id,LoyaltyTierGroupId,Name,SequenceNumber FROM LoyaltyTier",
+      "operation": "Upsert",
+      "externalId": "Name"
+    },
+    {
+      "query": "SELECT CostperUnit,CurrencyType,ExpiryModel,ExpiryPeriodFrequency,ExpiryPeriodUnit,ExtendExpiration,HasEscrow,Id,IsActive,IsPrimary,LoyaltyProgramId,LoyaltyTierGroupId,Name FROM LoyaltyProgramCurrency",
+      "operation": "Upsert",
+      "externalId": "Name"
+    },
+    {
+      "query": "select Id,BenefitId, LoyaltyTierId, Name  from LoyaltyTierBenefit",
+      "operation": "Upsert",
+      "externalId": "Name"
+    },
+    {
+      "query": "SELECT Name, Description, ProcessType FROM JournalType",
+      "operation": "Upsert",
+      "externalId": "Name"
+    },
+    {
+      "query": "SELECT JournalTypeId, Name, Description FROM JournalSubType",
+      "operation": "Upsert",
+      "externalId": "Name"
+    }
+  ]
+}
