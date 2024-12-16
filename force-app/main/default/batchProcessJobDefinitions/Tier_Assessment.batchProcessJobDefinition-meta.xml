@@ -2,7 +2,7 @@
 <BatchProcessJobDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
     <batchSize>100</batchSize>
     <dataSource>
-        <condition>1 AND 2</condition>
+        <condition>1</condition>
         <criteria>all</criteria>
         <filters>
             <dynamicValue>true</dynamicValue>
@@ -12,13 +12,6 @@
             <operator>equals</operator>
             <sequenceNo>1</sequenceNo>
         </filters>
-        <filters>
-            <dynamicValue>false</dynamicValue>
-            <fieldName>LoyaltyTierId</fieldName>
-            <fieldValue>0lgRL000000091hYAA</fieldValue>
-            <operator>equals</operator>
-            <sequenceNo>2</sequenceNo>
-        </filters>
         <sourceObject>LoyaltyMemberTier</sourceObject>
         <sourceObjectField>LoyaltyMemberId</sourceObjectField>
     </dataSource>
@@ -27,6 +20,6 @@
     <processGroup>Loyalty</processGroup>
     <retryCount>2</retryCount>
     <retryInterval>10000</retryInterval>
-    <status>Inactive</status>
+    <status>Active</status>
     <type>LoyaltyProgramProcess</type>
 </BatchProcessJobDefinition>
