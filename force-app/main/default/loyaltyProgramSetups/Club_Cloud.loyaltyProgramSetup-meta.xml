@@ -384,4 +384,37 @@
         </rules>
         <status>Active</status>
     </programProcesses>
+    <programProcesses>
+        <executionType>RealTime</executionType>
+        <journalSubType>Member Enrollment</journalSubType>
+        <journalType>Accrual</journalType>
+        <processName>Club Cloud - Welcome Bonus</processName>
+        <processType>TransactionJournal</processType>
+        <rules>
+            <actions>
+                <actionName>Credit 100 Points</actionName>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>ProgramCurrencyName</parameterName>
+                    <value>Club Points</value>
+                    <valueType>Literal</valueType>
+                </actionParameters>
+                <actionParameters>
+                    <operator>Equals</operator>
+                    <parameterName>PointsToCredit</parameterName>
+                    <value>100</value>
+                </actionParameters>
+                <actionType>CreditPoints</actionType>
+            </actions>
+            <isProcessEligibilityRule>false</isProcessEligibilityRule>
+            <ruleName>Credit Points Welcome Bonus</ruleName>
+            <startDate>2024-12-15</startDate>
+            <status>Active</status>
+            <stepMappings>
+                <associatedStep>Credit 100 Points</associatedStep>
+                <sequence>1</sequence>
+            </stepMappings>
+        </rules>
+        <status>Active</status>
+    </programProcesses>
 </LoyaltyProgramSetup>
